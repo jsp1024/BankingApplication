@@ -47,6 +47,7 @@ namespace Form1
             fdform.Maturity_Date = (DateTime.UtcNow.AddDays(Convert.ToInt32(periodtxt.Text))).ToString("MM/dd/yyyy");
             fdform.Maturity_Amount = ((Convert.ToDecimal(moneytxt.Text) * Convert.ToInt32(periodtxt.Text) * Convert.ToDecimal(interesttxt.Text)) /
                 (100 * 12 * 30)) + (Convert.ToDecimal(moneytxt.Text));
+            //신청일로 부터 만기일 까지 돈을 예금 후 이자율을 계산해서 돈을 합산한다.
             dbe.FDs.Add(fdform);
             decimal amount = Convert.ToDecimal(moneytxt.Text);
             decimal totalamount = Convert.ToDecimal(accounts.balance);

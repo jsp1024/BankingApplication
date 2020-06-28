@@ -48,10 +48,11 @@ namespace Form1
             decimal transferacc = Convert.ToDecimal(desaccounttxt.Text);
             //보낼 돈의 금액이 본인 계좌의 돈보다 적을시에 송금을 실행한다.
             if (b1 > totalbal)
-            {
+            {   // db에 있는 계좌번호와 받는 사람의 계좌가 일치하도록 한다.
                 userAccount item2 = (from u in dbe.userAccounts
                                      where u.Account_No == transferacc
                                      select u).FirstOrDefault();
+                //받는 사람의 돈을 plus 시키고 보낸 사람의 돈을 minus시킨다.
                 item2.balance = item2.balance + totalbal;
                 item.balance = item.balance - totalbal;
                 Transfer transfer = new Transfer();

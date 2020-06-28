@@ -47,7 +47,7 @@ namespace Form1
         {
             bi = new BindingList<userAccount>();
             dbe = new banking_dbEntities();
-            var item = dbe.userAccounts.Where(a => a.Name == nametxt.Text);
+            var item = dbe.userAccounts.Where(a => a.Name == nametxt.Text);//이름이 db에 있을경우 list박스에 출력한다.
             foreach (var item1 in item)
             {
                 bi.Add(item1);
@@ -103,7 +103,7 @@ namespace Form1
         }
 
         private void button6_Click(object sender, EventArgs e)
-        {
+        {   //선택되어 있는 정보들을 전부 삭제 한 후 저장한다.
             bi.RemoveAt(dataGridView1.SelectedRows[0].Index);
             dbe = new banking_dbEntities();
             decimal a = Convert.ToDecimal(accnotext.Text);
@@ -113,7 +113,7 @@ namespace Form1
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {
+        {   //db에 있는 계좌번호와 텍스트박스에 계좌번호가 일치 할 때 기존에 있는 정보를 새롭게 업데이트 시킨다.
             dbe = new banking_dbEntities();
             decimal accuntno = Convert.ToDecimal(accnotext.Text);
             userAccount useraccount = dbe.userAccounts.First(s => s.Account_No.Equals(accuntno));

@@ -29,18 +29,18 @@ namespace Form1
 
         private void loadstate()
         {
-            comboBox1.Items.Add("박재만");
+            comboBox1.Items.Add("고객");
         }
 
         private void loadaccount()
-        {
+        {   
+            /* 계좌번호 텍스트 박스에 자동으로 새로운 계좌번호를 입력하되 만약 계좌번호가 중복일 시에 
+             가장 최근에 만들어진 계좌번호에 1을 더하여서 텍스트 박스에 출력한다.*/
             BSE = new banking_dbEntities();
             var item = BSE.userAccounts.ToArray();
             no = item.LastOrDefault().Account_No + 1;
             accnotext.Text = Convert.ToString(no);
 
-
-            //var item = BSE
         }
 
         private void loaddate()
@@ -59,7 +59,7 @@ namespace Form1
         {
             OpenFileDialog opendlg = new OpenFileDialog();
             if (opendlg.ShowDialog() == DialogResult.OK)
-            {
+            {   //이미지 파일을 메모리 스트림에 저장한다.
                 Image img = Image.FromFile(opendlg.FileName);
                 pictureBox1.Image = img;
                 ms = new MemoryStream();
@@ -85,7 +85,7 @@ namespace Form1
             {
                 m_status = "미혼";
             }
-
+            //텍스트 박스와 체크박스 및 입력된 정보들을 db에 저장시킨다.
             BSE = new banking_dbEntities();
             userAccount acc = new userAccount();
             acc.Account_No = Convert.ToDecimal(accnotext.Text);

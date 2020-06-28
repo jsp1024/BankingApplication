@@ -31,7 +31,7 @@ namespace Form1
             {
                 Admin_Table user1 = dbe.Admin_Table.FirstOrDefault(a => a.Username.Equals(nametxt.Text));
                 if (user1 != null)
-                {
+                {   //관리자의 계정의 기존 비밀번호가 db랑 같을경우 새로운 비밀번호를 입력했을 시에 비밀번호를 변경하게 된다.
                     if (user1.Password.Equals(oldpass.Text))
                     {
                         user1.Password = newpass.Text;

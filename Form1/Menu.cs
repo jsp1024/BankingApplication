@@ -18,8 +18,9 @@ namespace Form1
         }
 
         private void newAccountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {   
             newAccount newacc = new newAccount();
+            //부모폼을 불러온다.
             newacc.MdiParent = this.MdiParent;
             newacc.Show();
             this.Close();

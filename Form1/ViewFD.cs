@@ -28,7 +28,7 @@ namespace Form1
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {   //db에서 고객의 정기예금 정보를 받아서 리스트형태로 보여준다.
             bi = new BindingList<FD>();
             dbe = new banking_dbEntities();
             string date = dateTimePicker1.Value.ToString("MM/dd/yyyy");
